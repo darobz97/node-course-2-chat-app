@@ -17,7 +17,17 @@ app.use(express.static(publicPath));
 //on registers an event listener
 //socket is the individual user's socket, as opposed to all the users connected to the server
 io.on('connection', (socket) => {
-  console.log('new user connected');
+  console.log('New user connected');
+
+  socket.emit('newMessage', {
+    from: 'robz',
+    text: 'Hey mate.',
+    createdAt: 123
+  });
+
+  socket.on('createMessage', (newEmail) => {
+    console.log('createEmail', newEmail);
+  });
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
