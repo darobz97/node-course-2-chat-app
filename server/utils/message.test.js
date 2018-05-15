@@ -17,6 +17,5 @@ describe('generateLocationMessage', () => {
     expect(message.from).toBe('Robz');
     expect(message.url).toBe('https://www.google.com/maps?q=40.6185194,-3.9368538');
     expect(typeof message.createdAt).toBe('number');
-    expect(message)toHaveProperty('createdAt');
   });
 });

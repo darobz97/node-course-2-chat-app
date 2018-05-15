@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
     console.log('createMessage', message);
     io.emit('newMessage', generateMessage(message.from, message.text));
     //When we call callback, we are aknowledging everything was correct, telling the front end.
-    callback('This is from the server');
+    callback();
   });
 
   socket.on('createLocationMessage', (coords) => {
