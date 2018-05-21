@@ -18,8 +18,17 @@ function scrollToBottom() {
 }
 
 socket.on('connect', function () {
-  console.log('Connected to server');
+  var params = jQuery.deparam(window.location.search);
 
+  socket.emit('join', params, function (err) {
+    if (err) {
+      alert(err);
+      //Here we can manipulate which location the user's on
+      window.location.href = '/';
+    } else {
+      console.log('No error');
+    }
+  });
 });
 
 socket.on('disconnect', function () {
