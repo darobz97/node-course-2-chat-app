@@ -35,6 +35,18 @@ socket.on('disconnect', function () {
   console.log('Disconnected from server');
 });
 
+socket.on('updateUserList', function (users) {
+  var ol = jQuery('<ol></ol>');
+
+  users.forEach(function (user) {
+    ol.append(jQuery('<li></li>').text(user));
+  });
+
+//We want to wipe the list replacing it with the new version
+  jQuery('#users').html(ol)
+
+})
+
 socket.on('newMessage', function (message) {
   var formattedTime = moment(message.createdAt).format('h:mm a')
   //This html() method returns what is inside of this script
